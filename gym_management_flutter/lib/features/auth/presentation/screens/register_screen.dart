@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../providers/auth_provider.dart';
 import 'package:gym_management_flutter/navigation/app_routes.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
-  final VoidCallback? onLoginTapped; // added callback parameter
-  const RegisterScreen({Key? key, this.onLoginTapped}) : super(key: key);
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   ConsumerState<RegisterScreen> createState() => _RegisterScreenState();
@@ -35,7 +35,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
         weight: double.tryParse(_weight) ?? 0.0,
       );
       if (success && mounted) {
-        widget.onLoginTapped?.call(); // use provided callback to switch to login screen
+        context.go('/login'); // Navigate to login screen after successful registration
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Registration successful! Please login.')),
         );
@@ -311,7 +311,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 children: [
                   const Text("Already have an account? "),
                   GestureDetector(
-                    onTap: widget.onLoginTapped, // Calls callback to switch to Login screen
+                    onTap: () => context.go('/login'),
                     child: const Text(
                       'Login',
                       style: TextStyle(
