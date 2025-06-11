@@ -393,7 +393,24 @@ class _AdminWorkoutScreenState extends ConsumerState<AdminWorkoutScreen> {
                       ),
                       validator: (value) => value!.isEmpty ? 'Please enter a title' : null,
                     ),
-                    // Removed Trainee ID field as it's auto-filled
+                    const SizedBox(height: 12),
+                    TextFormField(
+                      controller: _traineeIdController,
+                      decoration: const InputDecoration(
+                        labelText: "Trainee ID",
+                        contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                      ),
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter trainee ID';
+                        }
+                        if (int.tryParse(value) == null) {
+                          return 'Please enter a valid number';
+                        }
+                        return null;
+                      },
+                    ),
                     const SizedBox(height: 12),
                     TextFormField(
                       controller: _setsController,

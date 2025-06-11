@@ -7,8 +7,8 @@ plugins {
 
 android {
     namespace = "com.example.gym_management_flutter"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = "27.0.12077973"
+    compileSdk = 34
+    ndkVersion = "25.1.8937393"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -24,10 +24,10 @@ android {
         applicationId = "com.example.gym_management_flutter"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        minSdk = 21
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {
@@ -41,4 +41,9 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
 }
